@@ -11,6 +11,9 @@ Es necesario tener creadas las carpetas inbox y outbox para que funcione.
 npm run cbhell
 ```
 ## Nivel 2. Singleton
+Ficheros:
+- **2_singleton/singleton.js**, contiene archivo principal.
+- **2_singleton/Marcador.js**, contiene las clases que implementan el singleton Marcador.
 ```
 npm run singleton
 ```

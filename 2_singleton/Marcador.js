@@ -59,21 +59,4 @@ class Marcador {
     }
 }
 
-
-
-
-
-
-
-
-
-
 module.exports = Marcador;
-
-/*
-let prueba = Marcador.getInstance();
-console.log(prueba.msg);
-prueba.msg = "Holiwi de kiwi";
-let prueba2 = Marcador.getInstance();
-console.log(prueba2.msg);
-*/

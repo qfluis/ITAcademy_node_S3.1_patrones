@@ -4,7 +4,8 @@
   "description": "Fichero **callback_hell.js**\r ```\r npm run cbhell\r ```",
   "main": "callback_hell.js",
   "scripts": {
-    "cbhell": "node 1_callback_hell/callback_hell.js"
+    "cbhell": "node 1_callback_hell/callback_hell.js",
+    "singleton": "node 2_singleton/singleton.js"
   },
   "repository": {
     "type": "git",

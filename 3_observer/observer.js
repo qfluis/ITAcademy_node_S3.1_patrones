@@ -1,4 +1,4 @@
-//const EventEmitter = require('events');
+const EventEmitter = require('events');
 
 class Usuario{
     constructor(nombre) {
@@ -10,24 +10,24 @@ class Usuario{
     }
 
     suscribirseATema(tema){
-        tema.suscribe(this);
+        tema.subscribe(this.accionCambios, this);
     }
-    notificar(mensajes){
-        console.log(mensajes);
-    }
-
-    
+    accionCambios(tema){
+        console.log(` >${this.nombre}: he recibido la notificación del tema: ${tema}`);
+    }    
 }
 
 // 
-class Tema {//extends EventEmitter {
-    constructor() {
-        this.suscritos = [];
-        this.mensajes = [];
+class Tema {
+    #ee = new EventEmitter();
+    
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.mensajes = [];        
     }
 
-    suscribe(usuario){
-        this.suscritos.push(usuario);
+    subscribe(callback, ambito){
+        this.#ee.addListener(`${this.nombre}`, callback.bind(ambito));
     }
 
     publicar(texto, usuario){
@@ -35,31 +35,28 @@ class Tema {//extends EventEmitter {
             usuario: usuario.nombre,
             mensaje: texto
         });
+        console.log(`#${this.nombre.toUpperCase()}> Recibido nuevo mensaje de ${usuario.nombre}. Procedemos a notificar`);
         this.notificar();        
     }
 
     notificar() {
-        for (let usuario of this.suscritos) {
-            usuario.notificar(this.mensajes);
-        }
+        this.#ee.emit(`${this.nombre}`,this.nombre);
     }
 
 }
 
-const tema1 = new Tema();
+const tema1 = new Tema("Bonsais");
+const tema2 = new Tema("Furros");
 const user1 = new Usuario("Luis");
 const user2 = new Usuario("Toni");
 const user3 = new Usuario("cucu");
+const user4 = new Usuario("Sonic");
 user1.suscribirseATema(tema1);
-user3.suscribirseATema(tema1);
-user2.escribirEnTema(tema1, "Holiwi de kiwi");
-
+user2.suscribirseATema(tema2);
+user3.suscribirseATema(tema2);
+user4.escribirEnTema(tema1, "Holiwi de kiwi");
+user1.escribirEnTema(tema2, "Ola hente");
 /*
-Escriu una aplicació que creï diferents objectes Usuari. 
-L'aplicació podrà crear diferents Temes i subscriure els usuaris a ells. 
-Quan un Usuari afegeixi un missatge a un Tema s'enviarà una alerta per 
-la consola des del Tema. També ho mostraran per consola cadascun dels Usuaris 
-que estiguin subscrits al Tema (rebran el missatge). 
-Crea un Tema amb un Usuari i un altre amb dos i mostra la recepció dels 
-missatges pels usuaris. Utilitza el mòdul events.
+user1.suscribirseATema(tema2);
+user4.escribirEnTema(tema2, "Me encanta sonic la pelicula");
 */

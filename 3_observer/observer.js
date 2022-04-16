@@ -1,4 +1,4 @@
-const EventEmitter = require('events');
+//const EventEmitter = require('events');
 
 class Usuario{
     constructor(nombre) {
@@ -20,7 +20,7 @@ class Usuario{
 }
 
 // 
-class Tema extends EventEmitter {
+class Tema {//extends EventEmitter {
     constructor() {
         this.suscritos = [];
         this.mensajes = [];

@@ -17,3 +17,8 @@ Ficheros:
 ```
 npm run singleton
 ```
+## Nivel 3. Observer
+
+```
+npm run observer
+```

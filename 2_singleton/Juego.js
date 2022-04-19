@@ -17,7 +17,10 @@ class Juego {
 
     intentarMarcarPunto(jugador) {
         let num = Math.random();
-        if (num > 0.50) this.marcador.marcarPunto(jugador);
+        if (num > 0.50) {
+            console.log(`Punto del jugador ${jugador.nombre} del equipo ${jugador.equipo}`);
+            this.marcador.anadirPunto(jugador.equipo);
+        }
     }
 
     ronda() {

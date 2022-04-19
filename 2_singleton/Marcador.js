@@ -2,21 +2,19 @@ class MarcadorPrivado {
     equipos = [];
     
     constructor() {
-        this.msg = "Holiwi";
+        this.equipos = [];
     }
 
-    marcarPunto(jugador){
-        console.log(`Punto del jugador ${jugador.nombre} del equipo ${jugador.equipo}`);
-        
+    anadirPunto(equipo) {
         // crea equipo si no existe
-        let indexEquipo = this.equipos.findIndex( elem => elem.equipo  === jugador.equipo);
+        let indexEquipo = this.equipos.findIndex( elem => elem.equipo  === equipo);
         if ( indexEquipo === -1){
-            this.anadirEquipo(jugador.equipo);
-            indexEquipo = this.equipos.findIndex( elem => elem.equipo  === jugador.equipo);
+            this.anadirEquipo(equipo);
+            indexEquipo = this.equipos.findIndex( elem => elem.equipo  === equipo);
         }
         // añade punto        
-        this.equipos[indexEquipo].puntos ++;
-    }
+        this.equipos[indexEquipo].puntos ++;        
+    }    
 
     anadirEquipo (equipo) {
         this.equipos.push({ 
@@ -29,18 +27,21 @@ class MarcadorPrivado {
         this.equipos.sort( (a, b) => b.puntos - a.puntos );
         let posicion = 0;
         let ultimosPuntos = 0;
+        const consoleColor = '\x1b[36m%s\x1b[0m';
 
-        console.log("### CLASIFICACIÓN ###")
+        console.log(consoleColor,"### CLASIFICACIÓN ###")
 
         for (let equipo of this.equipos) {
             if (equipo.puntos !== ultimosPuntos) {
                 posicion++;
             }
-            console.log(`${posicion}. ${equipo.equipo} (${equipo.puntos} puntos)`);
+            console.log(consoleColor,`${posicion}. ${equipo.equipo} (${equipo.puntos} puntos)`);
             //console.log("holi: ", equipo.puntos, ultimosPuntos);
             
             ultimosPuntos = equipo.puntos;            
         }
+
+        //console.table(this.equipos);
 
         console.log("#####################");
     }

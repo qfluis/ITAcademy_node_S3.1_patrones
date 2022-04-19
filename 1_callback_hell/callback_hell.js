@@ -8,7 +8,7 @@ const reverseText = str => str.split("").reverse().join("");
 // Implementación con versiones sincronas de los métodos de fs
 const darLaVuelta = () => {
   try{
-    const files = readdirSync(inbox);
+    const files = readdirSync("inbox");
     for (let file of files) {
       const fileContent = readFileSync(join(inbox,file), "utf8");
       writeFileSync(join(outbox, file), reverseText(fileContent),"utf8");

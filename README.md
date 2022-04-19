@@ -12,7 +12,7 @@ npm run cbhell
 ```
 ## Nivel 2. Singleton
 Ficheros:
-- **2_singleton/singleton.js**, contiene archivo principal.
+- **2_singleton/app.js**, contiene archivo principal.
 - **2_singleton/Marcador.js**, contiene las clases que implementan el singleton Marcador.
 ```
 npm run singleton

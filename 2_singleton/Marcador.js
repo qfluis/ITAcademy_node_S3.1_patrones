@@ -60,3 +60,38 @@ class Marcador {
 }
 
 module.exports = Marcador;
+
+
+
+
+
+// singleton usando objeto (sin usar clase) FINES EDUCATIVOS
+/*
+const marcador = {
+    equipos: [],
+    marcarPunto (jugador){
+        console.log(`Punto del jugador ${jugador.nombre} del equipo ${jugador.equipo}`);
+        
+        // crea equipo si no existe
+        let indexEquipo = this.equipos.findIndex( elem => elem.equipo  === jugador.equipo);
+        if ( indexEquipo === -1){
+            this.anadirEquipo(jugador.equipo);
+            indexEquipo = this.equipos.findIndex( elem => elem.equipo  === jugador.equipo);
+        }
+        // añade punto
+        
+        this.equipos[indexEquipo].puntos ++;
+    },
+    anadirEquipo (equipo) {
+        this.equipos.push({ 
+            equipo,
+            puntos: 0 
+        });
+    },
+    mostrarMarcador () {
+        for (let equipo of this.equipos) {
+            console.log(equipo);
+        }
+    }
+}
+*/

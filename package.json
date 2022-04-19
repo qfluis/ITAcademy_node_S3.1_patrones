@@ -6,7 +6,7 @@
   "scripts": {
     "cbhell": "node 1_callback_hell/callback_hell.js",
     "singleton": "node 2_singleton/app.js",
-    "observer": "node 3_observer/observer.js"
+    "observer": "node 3_observer/app.js"
   },
   "repository": {
     "type": "git",

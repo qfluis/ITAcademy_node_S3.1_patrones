@@ -1,3 +1,4 @@
+// PRUEBA DE FUNCIONAMIENTO EventEmitter
 const EventEmitter = require('events');
 
 const prueba = () => {
